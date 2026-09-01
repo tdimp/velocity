@@ -1,7 +1,6 @@
-import psycopg
-from config import config
+from db import get_connection
 
-with psycopg.connect(**config) as conn:
+with get_connection() as conn:
     with conn.cursor() as cur:
         cur.execute("SELECT version()")
         print(cur.fetchone())
