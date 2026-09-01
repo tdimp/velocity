@@ -7,7 +7,7 @@ URL = 'https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_bn/en/station_status.json
 
 
 def get_station_status():
-    response = requests.get(URL)
+    response = requests.get(URL, timeout=10)
     response.raise_for_status()
     
     data = response.json()
@@ -68,11 +68,11 @@ def validate_station_status(stations):
         'last_reported',
     }
     
-    for i, station in enumerate(stations):
+    for station in stations:
         missing_fields = required_fields - station.keys()
         
         if missing_fields:
-            raise ValueError(f'Station {i} is missing fields: {missing_fields}')
+            raise ValueError(f'Station {station["station_id"]} is missing fields: {missing_fields}')
     
     return True
 

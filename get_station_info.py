@@ -3,7 +3,7 @@ from db import get_connection
 
 URL = 'https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_bn/en/station_information.json'
 
-response = requests.get(URL)
+response = requests.get(URL, timeout=10)
 response.raise_for_status()
 
 data = response.json()
