@@ -5,5 +5,5 @@ sources:
     database: mobility
     schema: public
     tables:
-      - name: station_info
+      - name: station_information
       - name: station_status
