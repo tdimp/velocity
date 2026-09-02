@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    database: mobility
+    schema: public
+    tables:
+      - name: station_info
+      - name: station_status
