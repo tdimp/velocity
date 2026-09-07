@@ -20,5 +20,5 @@ select
   a.day_of_week,
   a.time_of_day
 
-from {{ ref('int_station_snapshots') }} as a;
+from {{ ref('int_station_snapshots') }} as a
 
