@@ -1,6 +1,6 @@
 {{ config(materialized='table') }}
 
-select
+select distinct
   info.station_id,
   info.name,
   info.lat,
