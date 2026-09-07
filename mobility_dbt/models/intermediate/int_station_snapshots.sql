@@ -15,7 +15,7 @@ select
 
   extract(hour from status.last_reported) as hour,
   extract(isodow from status.last_reported) as weekday_num,
-  trim(to_char(status.last_reported, 'Day')) as weekday,
+  trim(to_char(status.last_reported, 'Day')) as day_of_week,
   case
     when extract(hour from status.last_reported) between 6 and 9
       then 'morning'

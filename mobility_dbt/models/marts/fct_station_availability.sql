@@ -1,20 +1,24 @@
 {{ config(materialized='table') }}
 
 select
-  status.station_id,
-  status.retrieved_at,
-  status.last_reported,
-  status.num_bikes_available,
-  status.num_docks_available,
-  status.num_bikes_available = 0 as is_empty,
+  a.station_id,
+  a.retrieved_at,
+  a.last_reported,
+  a.num_bikes_available,
+  a.num_docks_available,
+  a.is_empty,
+
   case
-    when status.weekday_num between 1 and 5
+    when a.weekday_num between 1 and 5
       then 'weekday'
-    when status.weekday_num = 6
+    when a.weekday_num = 6
       then 'saturday'
-    when status.weekday_num = 7
+    when a.weekday_num = 7
       then 'sunday'
-  status.day_of_week,
-  status.time_of_day
-from {{ ref('int_station_snapshots') }}
+  end as day_type,
+
+  a.day_of_week,
+  a.time_of_day
+
+from {{ ref('int_station_snapshots') }} as a;
 
