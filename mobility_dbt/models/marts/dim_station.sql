@@ -7,4 +7,4 @@ select
   info.lon,
   info.capacity,
   info.is_virtual_station,
-from {{ ref('int_empty_stations') }} info;
+from {{ ref('int_station_snapshots') }} as info;
